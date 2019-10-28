@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import split_scale
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
-import wrangle
+#import wrangle
 import env
 import seaborn as sns
 
@@ -15,23 +15,17 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder, MinMaxScaler
 
 
+def get_db_url(db):
+    return f'mysql+pymysql://{env.user}:{env.password}@{env.host}/{db}'
 
-
-url = env.get_db_url('iris_db')
-
-def prep_iris():
-    df = pd.read_sql("""
-SELECT *
-FROM measurements m
-JOIN species s on s.species_id = m.species_id;
-"""
-
-,url)
-    df.drop(['species_id','measurement_id'],axis=1,inplace=True)
-    df.rename(columns={'species_name':'species'},inplace=True)
-    int_encoder = LabelEncoder()
-    int_encoder.fit(df.species)
-    df.species = int_encoder.transform(df.species)
-
+url = get_db_url('telco_churn')
+def prep_telco():
+    df = pd.read_sql( """
+    select *
+    from customers
+    join contract_types on customers.`contract_type_id`=`contract_types`.`contract_type_id`
+    join `internet_service_types` on customers.`internet_service_type_id` = `internet_service_types`.`internet_service_type_id`
+    join `payment_types` on customers.`payment_type_id` = `payment_types`.`payment_type_id`;""", url)
 
     return df
+
