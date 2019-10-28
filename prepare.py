@@ -77,4 +77,16 @@ def prep_telco(df):
     df['churn'] = df['churn'].replace({'Yes':1,'No':0})
     df['total_charges'] = df.total_charges.replace(' ', '0')
     df['total_charges'] = df.total_charges.astype('float')
+
     return df
+
+def encode_variable(column):
+    lab_enc = LabelEncoder()
+    lab_enc.fit(df[column])
+    df[column] = lab_enc.transform(df[column])
+
+def encode_variable(column):
+    lab_enc = LabelEncoder()
+    lab_enc.fit(df[column])
+    df[column] = lab_enc.transform(df[column])
+
