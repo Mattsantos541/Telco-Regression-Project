@@ -90,3 +90,18 @@ def encode_variable(column):
     lab_enc.fit(df[column])
     df[column] = lab_enc.transform(df[column])
 
+def change_values(df):
+    df['partner'] = df['partner'].replace({'Yes':1,'No':0})
+    df['dependents'] = df['dependents'].replace({'Yes':1,'No':0})
+    df['phone_service']= df ['phone_service'].replace({'Yes':1,'No':0})
+    df['online_security']= df['online_security'].replace({'Yes':1,'No':0,'No internet service':2})
+    df['device_protection']= df['device_protection'].replace({'Yes':1,'No':0,'No internet service':2})
+    df['tech_support']= df['tech_support'].replace({'Yes':1,'No':0,'No internet service':2})
+    df['streaming_tv']= df['streaming_tv'].replace({'Yes':1,'No':0,'No internet service':2})
+    df['streaming_movies']= df['streaming_movies'].replace({'Yes':1,'No':0,'No internet service':2})
+    df['paperless_billing']=df['paperless_billing'].replace({'Yes':1,'No':0})
+    df['gender']= df['gender'].replace({'Male':1,'Female':0})
+    df['contract_type']= df['contract_type'].replace({'Month-to-month':0,'One year':1,'Two year':2})
+    #df['internet_service_type']=df['internet_service_type].replace({'none':0, })
+    return df
+
