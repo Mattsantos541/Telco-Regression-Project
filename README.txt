@@ -37,8 +37,42 @@ tech_support
 monthly _charges
 Toatl_charges
 
-within the data set contsining just the month to moonth contracts, the decision tree clasifier increased the4 accuracy of the model by 1%
+within the data set containing just the month to month contracts, the decision tree clasifier increased the accuracy of the model by 1%
 
 The acuracy of the MVP is 79%
+
+
+Logistic Regression-
+
+using the variables: 
+tenure
+online_secuirty
+tech_support
+monthly _charges
+Total_charges
+
+within the data set containing just the month to month contracts, the decision tree clasifier decreased the accuracy of the model 
+
+The acuracy of the logistic regression is 71%
+
+
+K-Nearest Neighbor-
+
+using the variables: 
+
+tenure
+online_secuirty
+tech_support
+monthly _charges
+Total_charges
+
+within the data set containing just the month to month contracts, the decision tree clasifier decreased the accuracy of the model 
+
+The acuracy of the logistic regression is 76%
+
+
+
+
+
 
 

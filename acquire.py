@@ -42,11 +42,12 @@ def prep_telco_month():
     return df
 
 def prep_telco_1year():
-    df=pd.read_sql('''
-    select *
-    from customers
-    join contract_types on customers.`contract_type_id`=`contract_types`.`contract_type_id`
-    join `internet_service_types` on customers.`internet_service_type_id` = `internet_service_types`.`internet_service_type_id`
-    join `payment_types` on customers.`payment_type_id` = `payment_types`.`payment_type_id`
-    where contract_type= 'One year';''', url
-)
+      df=pd.read_sql('''
+      select *
+      from customers
+      join contract_types on customers.`contract_type_id`=`contract_types`.`contract_type_id`
+      join `internet_service_types` on customers.`internet_service_type_id` = `internet_service_types`.`internet_service_type_id`
+      join `payment_types` on customers.`payment_type_id` = `payment_types`.`payment_type_id`
+      where contract_type= 'One year';''', url)
+      return df
+  
